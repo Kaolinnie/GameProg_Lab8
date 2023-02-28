@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraRotation : MonoBehaviour
-{
+public class CameraRotation : MonoBehaviour {
+
+	private Ray ray;
     public float Sensitivity {
 		get { return sensitivity; }
 		set { sensitivity = value; }
@@ -22,7 +23,12 @@ public class CameraRotation : MonoBehaviour
 		rotation.y = Mathf.Clamp(rotation.y, -yRotationLimit, yRotationLimit);
 		var xQuat = Quaternion.AngleAxis(rotation.x, Vector3.up);
 		var yQuat = Quaternion.AngleAxis(rotation.y, Vector3.left);
-
+		// ray = transform.position, transform.forward;
+		// Debug.DrawRay(transform.position,transform.forward);
+		
 		transform.localRotation = xQuat * yQuat; //Quaternions seem to rotate more consistently than EulerAngles. Sensitivity seemed to change slightly at certain degrees using Euler. transform.localEulerAngles = new Vector3(-rotation.y, rotation.x, 0);
+		
+
+		
 	}
 }

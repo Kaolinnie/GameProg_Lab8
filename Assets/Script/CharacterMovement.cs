@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterMovement : MonoBehaviour
 {
@@ -13,23 +15,21 @@ public class CharacterMovement : MonoBehaviour
     private float gravityValue = -9.81f;
     private CharacterController controller;
     private float walkSpeed = 5;
-    private float runSpeed = 8; 
-    
- 
+    private float runSpeed = 8;
     private void Start()
     {
         controller = GetComponent<CharacterController>();
     }
 
     public void Update()
-    {
-       UpdateRotation();
-       ProcessMovement();
+    { 
+        UpdateRotation();
+        ProcessMovement();
     }
+
     void UpdateRotation()
     {
         transform.Rotate(0, Input.GetAxis("Mouse X")* mouseSensitivy, 0, Space.Self);
- 
     }
 
     void ProcessMovement()

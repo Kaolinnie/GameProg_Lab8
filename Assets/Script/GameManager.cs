@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,9 +18,8 @@ public class GameManager : MonoBehaviour
     public void IncrementScore()
     {
         Score += 1;
-        if ( Score == 4)
-        {
-            Debug.Log("You win !");
+        if ( Score == 3) { //switched this to 3 because one of the targets wasn't functional
+            SceneManager.LoadScene("Lab8");
         }
     }
 }
